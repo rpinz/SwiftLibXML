@@ -1,0 +1,3 @@
+[submodule "Library/CLibXML2"]
+	path = Library/CLibXML2
+	url = https://github.com/rpinz/CLibXML2

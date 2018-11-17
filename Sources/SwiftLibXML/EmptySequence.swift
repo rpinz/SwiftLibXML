@@ -13,5 +13,9 @@ public func emptyIterator<T>() -> AnyIterator<T> {
 
 /// Function returning an empty sequence of T
 public func emptySequence<T>() -> AnySequence<T> {
+#if swift(>=4.2)
+    return AnySequence(EmptyCollection.Iterator())
+#else
     return AnySequence(EmptyIterator())
+#endif
 }

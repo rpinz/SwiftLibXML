@@ -1,5 +1,4 @@
 // swift-tools-version:4.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -15,13 +14,13 @@ let package = Package(
     products: [
         .library(
             name: "SwiftLibXML",
-            targets: ["SwiftLibXML"]),
+            targets: ["SwiftLibXML"])
     ],
     dependencies: deps,
     targets: [
         .target(
             name: "SwiftLibXML",
-            dependencies: []),
+            dependencies: [])
         //.testTarget(name: ""SwiftLibXMLTests",
         //    dependencies: ["SwiftLibXML"]),
     ],
