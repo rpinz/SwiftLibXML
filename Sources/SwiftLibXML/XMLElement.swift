@@ -30,8 +30,12 @@ extension XMLElement {
     /// content of the XML element
     public var content: String {
         let content: UnsafeMutablePointer<xmlChar>? = xmlNodeGetContent(node)
+#if swift(>=4.2)
 #if compiler(>=5.0)
         let txt = content.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
+#else
+        let txt = content.map { String(cString: UnsafePointer($0)) } ?? ""
+#endif
 #else
         let txt = content.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
@@ -71,8 +75,12 @@ extension XMLElement {
     /// return the value of a given attribute
     public func attribute(named n: String) -> String? {
         let value: UnsafeMutablePointer<xmlChar>? = xmlGetProp(node, n)
+#if swift(>=4.2)
 #if compiler(>=5.0)
         return value.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
+#else
+        return value.map { String(cString: UnsafePointer($0)) } ?? ""
+#endif
 #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
@@ -81,8 +89,12 @@ extension XMLElement {
     /// return the value of a given attribute in a given name space
     public func attribute(named name: String, namespace: String) -> String? {
         let value: UnsafeMutablePointer<xmlChar>? = xmlGetNsProp(node, name, namespace)
+#if swift(>=4.2)
 #if compiler(>=5.0)
         return value.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
+#else
+        return value.map { String(cString: UnsafePointer($0)) } ?? ""
+#endif
 #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
