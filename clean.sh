@@ -2,4 +2,4 @@
 #
 # Remove the .build folder
 #
-exec rm -rf .build Package.resolved
+exec rm -rf .build
