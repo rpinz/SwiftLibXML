@@ -63,11 +63,11 @@ public class XMLDocument {
         guard let children = attr.pointee.children,
               let s = xmlNodeListGetString(xml, children, 1) else { return nil }
 #if swift(>=4.2)
-#if compiler(>=5.0)
+    #if swift(>=5.0) || compiler(>=5.0)
         let value = String(cString: UnsafePointer<CChar>(s))
-#else
+    #else
         let value = String(cString: UnsafePointer(s))
-#endif
+    #endif
 #else
         let value = String(cString: UnsafePointer(s))
 #endif

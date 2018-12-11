@@ -30,6 +30,7 @@ let package = Package(
         sysLibrary
     ],
     swiftLanguageVersions: [
-        .v4_2
+        .v4_2,
+        .version("5")
     ]
 )

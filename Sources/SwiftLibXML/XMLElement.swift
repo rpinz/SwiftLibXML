@@ -31,11 +31,11 @@ extension XMLElement {
     public var content: String {
         let content: UnsafeMutablePointer<xmlChar>? = xmlNodeGetContent(node)
 #if swift(>=4.2)
-#if compiler(>=5.0)
+    #if swift(>=5.0) || compiler(>=5.0)
         let txt = content.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
-#else
+    #else
         let txt = content.map { String(cString: UnsafePointer($0)) } ?? ""
-#endif
+    #endif
 #else
         let txt = content.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
@@ -76,11 +76,11 @@ extension XMLElement {
     public func attribute(named n: String) -> String? {
         let value: UnsafeMutablePointer<xmlChar>? = xmlGetProp(node, n)
 #if swift(>=4.2)
-#if compiler(>=5.0)
+    #if swift(>=5.0) || compiler(>=5.0)
         return value.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
-#else
+    #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
-#endif
+    #endif
 #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
@@ -90,11 +90,11 @@ extension XMLElement {
     public func attribute(named name: String, namespace: String) -> String? {
         let value: UnsafeMutablePointer<xmlChar>? = xmlGetNsProp(node, name, namespace)
 #if swift(>=4.2)
-#if compiler(>=5.0)
+    #if swift(>=5.0) || compiler(>=5.0)
         return value.map { String(cString: UnsafePointer<CChar>($0)) } ?? ""
-#else
+    #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
-#endif
+    #endif
 #else
         return value.map { String(cString: UnsafePointer($0)) } ?? ""
 #endif
