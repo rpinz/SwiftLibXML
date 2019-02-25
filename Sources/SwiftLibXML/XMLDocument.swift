@@ -64,7 +64,7 @@ public class XMLDocument {
               let s = xmlNodeListGetString(xml, children, 1) else { return nil }
 #if swift(>=4.2)
     #if swift(>=5.0) || compiler(>=5.0)
-        let value = String(cString: UnsafePointer<CChar>(s))
+        let value = String(cString: UnsafeMutablePointer<xmlChar>(s))
     #else
         let value = String(cString: UnsafePointer(s))
     #endif
